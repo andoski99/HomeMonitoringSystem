@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Home Monitoring System</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script src="{{ url_for('static', filename='script.js') }}"></script>
@@ -8,35 +12,29 @@
 <body>
     <h1>Home Monitoring System</h1>
     <div id="deviceInfo"></div>
-    <div id="deviceInfo"></div>
-    <div id="temperatureInfo"></div> <!-- Add this line -->
+    <div id="temperatureInfo"></div>
     <div id="temperatureValue"></div>
 
-
     <div class="fan">
-      <button id="toggleFan1" class="button" onclick="toggleFan(1)">
-        Toggle Fan 1 - <span id="fan1Status">Off</span>
+      <button id="turnOnFan1" class="button" onclick="turnFanOn(1)">
+        Fan 1 - <span id="fan1Status">Off</span>
       </button>
       <div class="circle" id="fan1Circle"></div>
     </div>
 
     <div class="fan">
-      <button id="toggleFan2" class="button" onclick="toggleFan(2)">
-        Toggle Fan 2 - <span id="fan2Status">Off</span>
+      <button id="turnOnFan2" class="button" onclick="turnFanOn(2)">
+        Fan 2 - <span id="fan2Status">Off</span>
       </button>
       <div class="circle" id="fan2Circle"></div>
     </div>
 
-    <div>
-        <label for="temperatureInput">Set temperature:</label>
-        <input type="number" id="temperatureInput" name="temperatureInput" min="10" max="40">
+    <!-- Tent Representations -->
+    <div class="tent outer-tent">
+      Outer Tent
+      <div class="tent inner-tent">Inner Tent 1</div>
+      <div class="tent inner-tent">Inner Tent 2</div>
     </div>
-
-    <div>
-        <label for="temperatureSlider">Set temperature:</label>
-        <input type="range" id="temperatureSlider" name="temperatureSlider" min="0" max="100" value="50">
-    </div>
-      
 
     <div class="thermometer">
         <div class="glass">
@@ -52,15 +50,12 @@
           </div>
           <div class="labels">
             <!-- Temperature labels -->
-            <div class="label">40&deg;C</div>
-            <div class="label">30&deg;C</div>
-            <!-- ... Add more temperature labels as needed -->
-            <div class="label">10&deg;C</div>
+            <div class="label">35&deg;C</div>
+            <div class="label">25&deg;C</div>
+            <div class="label">15&deg;C</div>
           </div>
         </div>
       </div>
       
-      
-
 </body>
 </html>

@@ -31,7 +31,7 @@ canvas {
 
   .thermometer {
     width: 100px; /* Adjust the width as needed */
-    height: 400px; /* Adjust the height as needed */
+    height: 200px; /* Adjust the height as needed */
     position: relative;
     margin-left: 30px; /* Add this line to push the thermometer to the right */
     margin-right: auto; /* Adjust the margin-right value as needed */
@@ -114,9 +114,30 @@ canvas {
     margin-right: auto; /* Add this line to move the labels to the left */
     margin-bottom: 15px; /* Adjust the margin-bottom value as needed */
   }
-  
-  
-  .label {
+ 
+.tent {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.outer-tent {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 300px;  /* Adjust as necessary */
+}
+
+.inner-tent {
+  width: 20%;
+  height: 70%;
+}
+
+.thermometer .glass {
+  height: 150px;  /* Half of the previous value */
+}
+
+.label {
     font-size: 12px;
     text-align: right; /* Align the labels to the right side */
     /* transform: rotate(180deg); Rotate each label 180 degrees */
