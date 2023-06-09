@@ -1,0 +1,124 @@
+body {
+    background-color: #fff;
+    color: #000;
+    font-family: Arial, sans-serif;
+}
+canvas {
+    border: 1px solid #000;
+}
+.button {
+    font-size: 20px;
+    padding: 10px 15px;
+    margin: 20px 2px;
+    cursor: pointer;
+    width: 200px;  /* Adjust this value to suit your needs */
+  }
+  
+  .circle {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: grey;
+    margin-left: 10px;
+  }
+  
+  .fan {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .thermometer {
+    width: 100px; /* Adjust the width as needed */
+    height: 400px; /* Adjust the height as needed */
+    position: relative;
+    margin-left: 30px; /* Add this line to push the thermometer to the right */
+    margin-right: auto; /* Adjust the margin-right value as needed */
+  }
+  
+  .glass {
+    width: 20px;
+    height: 100%;
+    background-color: transparent;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 8px;
+    z-index: 2; /* Add this line to bring the red indicator to the front */
+  }
+  
+  .red-fluid {
+    width: 100%;
+    height: 0;
+    background-color: #ff0033;
+    position: absolute;
+    bottom: 0;
+    transform-origin: bottom;
+    transform: scaleY(1); /* Set the red fluid height to 100% */
+    /* transition: height 0.5s ease; */
+    z-index: 1; /* Add this line to bring the red indicator to the front */
+  }
+  
+  .mercury {
+    width: 100%;
+    height: 100%;
+    background-color: #d8d8d8;
+    position: absolute;
+    bottom: 0;
+  }
+  
+  .scale {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column-reverse; /* Reverse the order of the scale labels */
+    align-items: center;
+    justify-content: space-between; /* Adjust the alignment to spread out the labels */
+    color: #666;
+    transform: rotate(180deg); /* Rotate the scale 180 degrees */
+  }
+  
+  .graduations {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .major-graduation {
+    width: 100%;
+    height: 3px;
+    background-color: #ccc;
+  }
+  
+  .minor-graduation {
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+  }
+
+  .labels {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* Set the direction back to column */
+    align-items: flex-start;
+    justify-content: space-between; /* Adjust the alignment to move labels to the left */
+    transform: rotate(180deg) scaleY(1);
+    margin-top: 25px; /* Adjust the margin-top value as needed */
+    margin-right: auto; /* Add this line to move the labels to the left */
+    margin-bottom: 15px; /* Adjust the margin-bottom value as needed */
+  }
+  
+  
+  .label {
+    font-size: 12px;
+    text-align: right; /* Align the labels to the right side */
+    /* transform: rotate(180deg); Rotate each label 180 degrees */
+  }
+  

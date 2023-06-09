@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Monitoring System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <h1>Home Monitoring System</h1>
+    <div id="deviceInfo"></div>
+    <div id="deviceInfo"></div>
+    <div id="temperatureInfo"></div> <!-- Add this line -->
+    <div id="temperatureValue"></div>
+
+
+    <div class="fan">
+      <button id="toggleFan1" class="button" onclick="toggleFan(1)">
+        Toggle Fan 1 - <span id="fan1Status">Off</span>
+      </button>
+      <div class="circle" id="fan1Circle"></div>
+    </div>
+
+    <div class="fan">
+      <button id="toggleFan2" class="button" onclick="toggleFan(2)">
+        Toggle Fan 2 - <span id="fan2Status">Off</span>
+      </button>
+      <div class="circle" id="fan2Circle"></div>
+    </div>
+
+    <div>
+        <label for="temperatureInput">Set temperature:</label>
+        <input type="number" id="temperatureInput" name="temperatureInput" min="10" max="40">
+    </div>
+
+    <div>
+        <label for="temperatureSlider">Set temperature:</label>
+        <input type="range" id="temperatureSlider" name="temperatureSlider" min="0" max="100" value="50">
+    </div>
+      
+
+    <div class="thermometer">
+        <div class="glass">
+          <div class="red-fluid" id="redFluid"></div>
+          <div class="mercury"></div>
+        </div>
+        <div class="scale">
+          <div class="graduations">
+            <!-- Graduation marks -->
+            <div class="major-graduation"></div>
+            <div class="minor-graduation"></div>
+            <!-- ... Add more graduations as needed -->
+          </div>
+          <div class="labels">
+            <!-- Temperature labels -->
+            <div class="label">40&deg;C</div>
+            <div class="label">30&deg;C</div>
+            <!-- ... Add more temperature labels as needed -->
+            <div class="label">10&deg;C</div>
+          </div>
+        </div>
+      </div>
+      
+      
+
+</body>
+</html>
