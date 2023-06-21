@@ -6,6 +6,9 @@ const TEMP_LOW = 19.9;
 let fan1State = false; // Initially, fan 1 is off
 let fan2State = false; // Initially, fan 2 is off
 
+const FAN_2_ON_TIME = 50000; // Time in milliseconds
+const FAN_2_OFF_TIME = 20000; // Time in milliseconds
+
 async function updateTemperature() {
   const response = await fetch("/api/temperature");
   const temperatureData = await response.json();
@@ -19,20 +22,14 @@ async function updateTemperature() {
 
   // Fan control
   if (temperatureData.temperature >= TEMP_HIGH) {
-    // Turn on both fans if temperature is greater than or equal to TEMP_HIGH
+    // Only control Fan 1 based on temperature
     if (!fan1State) {
       turnFanOn(1);
     }
-    if (!fan2State) {
-      turnFanOn(2);
-    }
   } else if (temperatureData.temperature <= TEMP_LOW) {
-    // Turn off both fans if temperature is less than or equal to TEMP_LOW
+    // Only control Fan 1 based on temperature
     if (fan1State) {
       turnFanOff(1);
-    }
-    if (fan2State) {
-      turnFanOff(2);
     }
   }
 }
@@ -62,6 +59,25 @@ async function turnFanOn(fanNumber) {
   }
 }
 
+function startFan2Timer() {
+  // Turn Fan 2 on and set it to turn off after FAN_2_ON_TIME
+  console.log("Turning on Fan 2");
+  turnFanOn(2);
+  fan2State = true;
+
+  setTimeout(() => {
+    // Now turn off Fan 2 and set it to turn on after FAN_2_OFF_TIME
+    console.log("Turning off Fan 2");
+    turnFanOff(2);
+    fan2State = false;
+
+    setTimeout(() => {
+      // Once fan 2 is turned off, wait for FAN_2_OFF_TIME and start the process again
+      startFan2Timer();
+    }, FAN_2_OFF_TIME);
+  }, FAN_2_ON_TIME);
+}
+
 async function turnFanOff(fanNumber) {
   const fanStatus = document.getElementById(`fan${fanNumber}Status`);
   const fanCircle = document.getElementById(`fan${fanNumber}Circle`);
@@ -86,8 +102,6 @@ async function turnFanOff(fanNumber) {
     }
   }
 }
-
-// Rest of your code...
 
 async function getDeviceInfo() {
   const response = await fetch(`/api/device-info/${0}`);
@@ -116,9 +130,20 @@ function setTemperatureRedFluid(temperature) {
   redFluid.style.height = `${heightPercentage}%`;
 }
 
+async function updateSoundLevel() {
+  const response = await fetch("/api/sound");
+  const soundData = await response.json();
+
+  // Display the fetched sound level value
+  document.getElementById(
+    "soundLevelValue"
+  ).textContent = `${soundData.soundLevel.toFixed(2)} dB`;
+}
+
 // Example usage
 window.onload = function () {
   getDeviceInfo(0); // Get device info for channel 0
-
+  startFan2Timer(); // Start the timer for Fan 2
   setInterval(updateTemperature, 5000); // Update temperature every 5 seconds
+  setInterval(updateSoundLevel, 5000); // Update sound level every 5 seconds
 };
