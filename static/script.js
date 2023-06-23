@@ -130,20 +130,20 @@ function setTemperatureRedFluid(temperature) {
   redFluid.style.height = `${heightPercentage}%`;
 }
 
-async function updateSoundLevel() {
-  const response = await fetch("/api/sound");
-  const soundData = await response.json();
+// async function updateSoundLevel() {
+//   const response = await fetch("/api/sound");
+//   const soundData = await response.json();
 
-  // Display the fetched sound level value
-  document.getElementById(
-    "soundLevelValue"
-  ).textContent = `${soundData.soundLevel.toFixed(2)} dB`;
-}
+//   // Display the fetched sound level value
+//   document.getElementById(
+//     "soundLevelValue"
+//   ).textContent = `${soundData.soundLevel.toFixed(2)} dB`;
+// }
 
 // Example usage
 window.onload = function () {
   getDeviceInfo(0); // Get device info for channel 0
   startFan2Timer(); // Start the timer for Fan 2
   setInterval(updateTemperature, 5000); // Update temperature every 5 seconds
-  setInterval(updateSoundLevel, 5000); // Update sound level every 5 seconds
+  // setInterval(updateSoundLevel, 5000); // Update sound level every 5 seconds
 };

@@ -6,46 +6,59 @@ from Phidget22.Net import *
 from Phidget22.Devices.TemperatureSensor import *
 from Phidget22.Devices.VoltageRatioInput import *
 
-def get_temperature_from_sensor():
+
+# Define the serial number for your devices
+DEVICE_SERIAL_NUMBER = 597183
+
+# Define a dictionary for each sensor
+fan_map = {
+    "MTFan": {'hubport': 0, 'channel': 0},
+    "GTFan": {'hubport': 0, 'channel': 1},
+    "FTFan1": {'hubport': 0, 'channel': 2},
+    "FTFan2": {'hubport': 0, 'channel': 3},
+}
+
+temperature_map = {
+    "GT_Temp": {'hubport': 1, 'channel': 0},
+    "OT_Temp": {'hubport': 1, 'channel': 3},
+    "FT_Temp": {'hubport': 5, 'channel': 0},
+    "MT_Temp": {'hubport': 4, 'channel': 0},
+}
+
+# Initialize Flask app
+app = Flask(__name__)
+
+# Enable network discovery
+Net.enableServerDiscovery(PhidgetServerType.PHIDGETSERVER_DEVICEREMOTE)
+Net.addServer("ServerName", "192.168.20.193", 5661, "", 0)
+
+# Define functions to get temperature from each sensor
+def get_temperature_from_sensor(sensor_name):
     ts = TemperatureSensor()
-    ts.setDeviceSerialNumber(592507)  # Replace with your device's serial number
-    ts.setIsHubPortDevice(False)  
-    ts.setHubPort(2)  
+    ts.setDeviceSerialNumber(DEVICE_SERIAL_NUMBER)
+    ts.setIsHubPortDevice(True)  
+    ts.setHubPort(temperature_map[sensor_name]['hubport'])  
+    ts.setChannel(temperature_map[sensor_name]['channel'])
     ts.openWaitForAttachment(5000)  # Wait for attach
     temperature = ts.getTemperature()
     ts.close()
     return temperature
 
-def get_sound_level_from_sensor():
-    ss = VoltageRatioInput()
-    ss.setDeviceSerialNumber(592507)  # Replace with your device's serial number
-    ss.setIsHubPortDevice(True)  
-    ss.setHubPort(1)  # Replace with your device's hub port
-    ss.openWaitForAttachment(5000)  # Wait for attach
-    sound_level = ss.getVoltageRatio()
-    ss.close()
-    return sound_level
 
-Net.enableServerDiscovery(PhidgetServerType.PHIDGETSERVER_DEVICEREMOTE)
-Net.addServer("ServerName", "192.168.0.252", 5661, "", 0)
-
-app = Flask(__name__)
-
-fan_map = {
-    0: {'serial': 592507, 'channel': 0, 'hubport': 0},
-    1: {'serial': 592507, 'channel': 0, 'hubport': 3},
-}
-
+# Add home route to serve the HTML page
 @app.route('/')
 def home():
     return render_template('index.html')
 
-@app.route('/api/fan/<int:fanNumber>', methods=['GET', 'POST'])
-def fan_status(fanNumber):
+
+# Define functions to control each fan
+@app.route('/api/fan/<string:fanName>', methods=['GET', 'POST'])
+def fan_status(fanName):
     do = DigitalOutput()
-    do.setDeviceSerialNumber(fan_map[fanNumber - 1]['serial'])
+    do.setDeviceSerialNumber(DEVICE_SERIAL_NUMBER)
     do.setIsHubPortDevice(True)
-    do.setHubPort(fan_map[fanNumber - 1]['hubport'])
+    do.setHubPort(fan_map[fanName]['hubport'])
+    do.setChannel(fan_map[fanName]['channel'])
     do.openWaitForAttachment(5000)  # Wait for attach
 
     if request.method == 'POST':
@@ -56,15 +69,11 @@ def fan_status(fanNumber):
     do.close()
     return jsonify({'state': state})
 
-@app.route('/api/temperature')
-def get_temperature():
-    temperature = get_temperature_from_sensor()
-    return jsonify({'temperature': temperature})
-
-@app.route('/api/sound')
-def get_sound():
-    sound_level = get_sound_level_from_sensor()
-    return jsonify({'sound': sound_level})
+# Define route for each temperature sensor
+@app.route('/api/temperature/<string:sensor_name>')
+def get_temperature(sensor_name):
+    temperature = get_temperature_from_sensor(sensor_name)
+    return jsonify({sensor_name: temperature})
 
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1', port=5001)

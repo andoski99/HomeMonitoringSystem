@@ -124,7 +124,7 @@ canvas {
 .outer-tent {
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 75%;
   height: 300px;  /* Adjust as necessary */
 }
 
