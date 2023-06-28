@@ -1,145 +1,197 @@
+/* #region General Styles */
 body {
     background-color: #fff;
     color: #000;
     font-family: Arial, sans-serif;
 }
+
 canvas {
     border: 1px solid #000;
 }
+/* #endregion General Styles */
+
+/* #region Common Components */
 .button {
     font-size: 20px;
     padding: 10px 15px;
     margin: 20px 2px;
     cursor: pointer;
-    width: 200px;  /* Adjust this value to suit your needs */
-  }
-  
-  .circle {
+    width: 200px;
+}
+
+.label {
+    font-size: 12px;
+    text-align: right;
+}
+/* #endregion Common Components */
+
+/* #region Fan */
+.circle {
     height: 50px;
     width: 50px;
     border-radius: 50%;
     display: inline-block;
     background-color: grey;
     margin-left: 10px;
-  }
-  
-  .fan {
+    position: relative;
+}
+
+.circle::before,
+.circle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    width: 2px;
+    height: 20px;
+}
+
+.circle::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.circle::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.fan {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-  }
+}
+/* #endregion Fan */
 
-  .thermometer {
-    width: 100px; /* Adjust the width as needed */
-    height: 200px; /* Adjust the height as needed */
+/* #region Thermometer */
+.thermometer {
+    width: 50px;
+    height: 100px;
     position: relative;
-    margin-left: 30px; /* Add this line to push the thermometer to the right */
-    margin-right: auto; /* Adjust the margin-right value as needed */
-  }
-  
-  .glass {
-    width: 20px;
+    margin-left: 30px;
+    margin-right: auto;
+}
+
+.glass {
+    width: 10px;
     height: 100%;
     background-color: transparent;
     position: relative;
     margin: 0 auto;
     overflow: hidden;
     border-radius: 8px;
-    z-index: 2; /* Add this line to bring the red indicator to the front */
-  }
-  
-  .red-fluid {
+    z-index: 2;
+}
+
+.red-fluid {
     width: 100%;
     height: 0;
     background-color: #ff0033;
     position: absolute;
     bottom: 0;
     transform-origin: bottom;
-    transform: scaleY(1); /* Set the red fluid height to 100% */
-    /* transition: height 0.5s ease; */
-    z-index: 1; /* Add this line to bring the red indicator to the front */
-  }
-  
-  .mercury {
+    transform: scaleY(1);
+    z-index: 1;
+}
+
+.mercury {
     width: 100%;
     height: 100%;
     background-color: #d8d8d8;
     position: absolute;
     bottom: 0;
-  }
-  
-  .scale {
+}
+
+.scale {
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
     display: flex;
-    flex-direction: column-reverse; /* Reverse the order of the scale labels */
+    flex-direction: column-reverse;
     align-items: center;
-    justify-content: space-between; /* Adjust the alignment to spread out the labels */
+    justify-content: space-between;
     color: #666;
-    transform: rotate(180deg); /* Rotate the scale 180 degrees */
-  }
-  
-  .graduations {
+    transform: rotate(180deg);
+}
+
+.graduations {
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
-  }
-  
-  .major-graduation {
+}
+
+.major-graduation {
     width: 100%;
     height: 3px;
     background-color: #ccc;
-  }
-  
-  .minor-graduation {
+}
+
+.minor-graduation {
     width: 100%;
     height: 1px;
     background-color: #ccc;
-  }
+}
 
-  .labels {
+.labels {
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column; /* Set the direction back to column */
+    flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between; /* Adjust the alignment to move labels to the left */
+    justify-content: space-between;
     transform: rotate(180deg) scaleY(1);
-    margin-top: 25px; /* Adjust the margin-top value as needed */
-    margin-right: auto; /* Add this line to move the labels to the left */
-    margin-bottom: 15px; /* Adjust the margin-bottom value as needed */
-  }
- 
+    margin-top: 25px;
+    margin-right: -30px;
+    margin-bottom: 15px;
+}
+/* #endregion Thermometer */
+
+/* #region Tents */
 .tent {
-  border: 1px solid black;
-  padding: 10px;
-  margin: 10px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
 }
 
 .outer-tent {
-  display: flex;
-  justify-content: space-between;
-  width: 75%;
-  height: 300px;  /* Adjust as necessary */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 300px;
+}
+
+.inner-tents-container {
+    display: flex;  /* set flex property to the new wrapper */
+    justify-content: space-between;  /* space inner tents */
+    width: 100%;  /* make sure it fills the outer tent */
 }
 
 .inner-tent {
-  width: 20%;
-  height: 70%;
+    height: 70%;  
+    margin: 10px 0; /* add some margin for spacing */
+    width: 30%; /* set the width to 1/3 of the container */
+}
+
+.fruiting-tent {
+    order: 1;  /* This ensures the fruiting tent comes first */
+}
+
+.outer-tent-thermometer {
+    order: 2;  
+    width: 30%; 
+}
+
+.grow-tent {
+    order: 2;  /* This ensures the grow tent comes after the fruiting tent */
 }
 
 .thermometer .glass {
-  height: 150px;  /* Half of the previous value */
+    height: 150px;
 }
-
-.label {
-    font-size: 12px;
-    text-align: right; /* Align the labels to the right side */
-    /* transform: rotate(180deg); Rotate each label 180 degrees */
-  }
-  
+/* #endregion Tents */

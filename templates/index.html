@@ -1,106 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Home Monitoring System</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
 </head>
 <body>
     <h1>Home Monitoring System</h1>
     <div id="deviceInfo"></div>
     <div id="temperatureInfo"></div>
     <div id="temperatureValue"></div>
-    <!-- <div id="soundInfo">
-        <h2>Sound Level</h2>
-        <p id="soundLevelValue">0 dB</p>
-    </div> -->
-
 
     <div class="fan">
-      <button id="turnOnFan1" class="button" onclick="turnFanOn(1)">
-        Fan 1 - <span id="fan1Status">Off</span>
-      </button>
-      <div class="circle" id="fan1Circle"></div>
+        <button id="turnOnFan1" class="button">
+            Fan 1 - <span id="fan1Status">Off</span>
+        </button>
+        <div class="circle" id="fan1Circle"></div>
     </div>
 
     <div class="fan">
-      <button id="turnOnFan2" class="button" onclick="turnFanOn(2)">
-        Fan 2 - <span id="fan2Status">Off</span>
-      </button>
-      <div class="circle" id="fan2Circle"></div>
+        <button id="turnOnFan2" class="button">
+            Fan 2 - <span id="fan2Status">Off</span>
+        </button>
+        <div class="circle" id="fan2Circle"></div>
     </div>
 
-    <!-- Tent Representations -->
+    <div class="thermometer">
+        <div class="glass">
+            <div class="red-fluid" id="redFluid"></div>
+            <div class="mercury"></div>
+        </div>
+        <div class="scale">
+            <div class="graduations">
+                <div class="major-graduation"></div>
+                <div class="minor-graduation"></div>
+            </div>
+            <div class="labels">
+                <div class="label">35&deg;C</div>
+                <div class="label">25&deg;C</div>
+                <div class="label">15&deg;C</div>
+            </div>
+        </div>
+    </div>
+
     <div class="tent outer-tent">
-      Outer Tent
-      <div class="tent inner-tent">Fruiting Tent</div>
-      <div class="thermometer">
+        <div id="tentContainer" class="center-text">
+            Outer Tent 
+        </div>
+        <div class="inner-tents-container">
+            <div class="tent inner-tent fruiting-tent">
+            Fruiting Tent
+                <div class="thermometer">
             <div class="glass">
                 <div class="red-fluid" id="redFluidFruiting"></div>
                 <div class="mercury"></div>
             </div>
             <div class="scale">
                 <div class="graduations">
-                    <!-- Graduation marks -->
                     <div class="major-graduation"></div>
                     <div class="minor-graduation"></div>
                 </div>
                 <div class="labels">
-                    <!-- Temperature labels -->
                     <div class="label">35&deg;C</div>
                     <div class="label">25&deg;C</div>
                     <div class="label">15&deg;C</div>
                 </div>
             </div>
-        </div>
-      <div class="tent inner-tent">Grow Tent</div>
-       <!-- Thermometer for Grow Tent -->
-        <div class="thermometer">
+             </div>
+            </div>
+            <div class="thermometer outer-tent-thermometer">
+            <div class="thermometer">
+                <div class="glass">
+                    <div class="red-fluid" id="redFluid"></div>
+                    <div class="mercury"></div>
+                </div>
+                <div class="scale">
+                    <div class="graduations">
+                        <div class="major-graduation"></div>
+                        <div class="minor-graduation"></div>
+                    </div>
+                    <div class="labels">
+                        <div class="label">35&deg;C</div>
+                        <div class="label">25&deg;C</div>
+                        <div class="label">15&deg;C</div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="tent inner-tent grow-tent">
+             Grow Tent
+            <div class="thermometer">
             <div class="glass">
                 <div class="red-fluid" id="redFluidGrow"></div>
                 <div class="mercury"></div>
             </div>
             <div class="scale">
                 <div class="graduations">
-                    <!-- Graduation marks -->
                     <div class="major-graduation"></div>
                     <div class="minor-graduation"></div>
                 </div>
                 <div class="labels">
-                    <!-- Temperature labels -->
                     <div class="label">35&deg;C</div>
                     <div class="label">25&deg;C</div>
                     <div class="label">15&deg;C</div>
                 </div>
             </div>
+            </div>
+            </div>
         </div>
-    </div>
-    </div>
-
-    <div class="thermometer">
-        <div class="glass">
-          <div class="red-fluid" id="redFluid"></div>
-          <div class="mercury"></div>
-        </div>
-        <div class="scale">
-          <div class="graduations">
-            <!-- Graduation marks -->
-            <div class="major-graduation"></div>
-            <div class="minor-graduation"></div>
-            <!-- ... Add more graduations as needed -->
-          </div>
-          <div class="labels">
-            <!-- Temperature labels -->
-            <div class="label">35&deg;C</div>
-            <div class="label">25&deg;C</div>
-            <div class="label">15&deg;C</div>
-          </div>
-        </div>
-      </div>
-      
+    </div> 
+    <!-- GH_temp thermometer code -->
+    ${createThermometerHtml("GH_temp", "redFluidGH_temp")}
 </body>
 </html>
