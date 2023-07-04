@@ -22,7 +22,7 @@ Net.addServer("ServerName", "192.168.20.193", 5661, "", 0)
 def get_temperature_from_sensor(sensor_name):
     ts = TemperatureSensor()
     ts.setDeviceSerialNumber(DEVICE_SERIAL_NUMBER)
-    ts.setIsHubPortDevice(True)
+    ts.setIsHubPortDevice(False)
     ts.setHubPort(temperature_map[sensor_name]['hubport'])
     ts.setChannel(temperature_map[sensor_name]['channel'])
     ts.openWaitForAttachment(5000)
