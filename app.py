@@ -30,10 +30,10 @@ def get_temperature_from_sensor(sensor_name):
     ts.close()
     return temperature
 
-@app.route('/api/temperature/MT_Temp')
-def get_mt_temperature():
-    temperature = get_temperature_from_sensor("MT_Temp")
-    return jsonify({"MT_Temp": temperature})
+@app.route('/api/temperature/<string:sensor_name>')
+def get_temperature(sensor_name):
+    temperature = get_temperature_from_sensor(sensor_name)
+    return jsonify({sensor_name: temperature})
 
 @app.route('/')
 def home():
@@ -55,10 +55,7 @@ def fan_status(fanName):
     do.close()
     return jsonify({'state': state})
 
-@app.route('/api/temperature/<string:sensor_name>')
-def get_temperature(sensor_name):
-    temperature = get_temperature_from_sensor(sensor_name)
-    return jsonify({sensor_name: temperature})
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1', port=5001)
