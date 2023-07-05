@@ -11,6 +11,7 @@ from Phidget22.Devices.VoltageRatioInput import *
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.interval import IntervalTrigger
 from Phidget22.Devices.HumiditySensor import *
+import time
 import requests
 
 # Device serial number
@@ -32,6 +33,10 @@ temperature_map = {
     "MT_Temp": {'hubport': 4, 'channel': 0}
 }
 
+humidity_map = {
+    "FT_Humidity": {'hubport': 5, 'channel': 0}
+}
+
 # Create the Flask application
 app = Flask(__name__)
 
@@ -40,6 +45,21 @@ fan_states = {
     'GTVentilation': False,
     'FTVentilation': False
 }
+
+from apscheduler.schedulers.background import BackgroundScheduler
+
+scheduler = BackgroundScheduler()
+scheduler.start()
+
+
+from apscheduler.triggers.interval import IntervalTrigger
+
+# # Schedule turning fans on every 10 minutes
+# scheduler.add_job(turn_fans_on, IntervalTrigger(minutes=10))
+
+# # Schedule turning fans off every 20 minutes
+# scheduler.add_job(turn_fans_off, IntervalTrigger(minutes=20))
+
 
 # Enable Phidget server discovery
 Net.enableServerDiscovery(PhidgetServerType.PHIDGETSERVER_DEVICEREMOTE)
@@ -221,6 +241,21 @@ def get_temperature(sensor_name):
     """
     temperature = get_temperature_from_sensor(sensor_name)
     return jsonify({sensor_name: temperature})
+
+@app.route('/api/humidity/<string:sensor_name>')
+def get_humidity(sensor_name):
+    """
+    Endpoint for retrieving the humidity reading from a sensor.
+
+    Args:
+        sensor_name (str): The name of the humidity sensor.
+
+    Returns:
+        A JSON response containing the humidity reading from the sensor.
+    """
+    humidity = get_humidity_from_sensor(sensor_name)
+    return jsonify({sensor_name: humidity})
+
 
 @app.route('/')
 def home():
