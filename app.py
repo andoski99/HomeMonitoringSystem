@@ -10,6 +10,7 @@ from Phidget22.Devices.TemperatureSensor import *
 from Phidget22.Devices.VoltageRatioInput import *
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.interval import IntervalTrigger
+from Phidget22.Devices.HumiditySensor import *
 import requests
 
 # Device serial number
@@ -109,7 +110,25 @@ def activate_FT_ventilation(state):
     fan_control(fan_map, 'MTFan', state)
     fan_control(fan_map, 'FTFan1', state)
  
+def get_humidity_from_sensor(sensor_name):
+    """
+    Retrieves the humidity reading from the specified sensor.
 
+    Args:
+        sensor_name (str): The name of the humidity sensor.
+
+    Returns:
+        The humidity reading from the sensor.
+    """
+    hs = HumiditySensor()
+    hs.setDeviceSerialNumber(DEVICE_SERIAL_NUMBER)
+    hs.setIsHubPortDevice(False)
+    hs.setHubPort(humidity_map[sensor_name]['hubport'])
+    hs.setChannel(humidity_map[sensor_name]['channel'])
+    hs.openWaitForAttachment(5000)
+    humidity = hs.getHumidity()
+    hs.close()
+    return humidity
 
 @app.route('/api/fan/group/GTVentilation', methods=['GET', 'POST'])
 def GT_ventilation_fan_status():
@@ -218,3 +237,4 @@ def home():
 if __name__ == '__main__':
     # Run the Flask application
     app.run(debug=True, host='127.0.0.1', port=5001)
+

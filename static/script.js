@@ -30,6 +30,16 @@ window.onload = function () {
   // Update the temperatures for all sensors
   sensorNames.forEach(updateTemperature);
 
+  // Humidity Stuff
+  // Create and append humidity gauge for FT sensor
+  const humidityGaugeFT = createHumidityGauge(
+    "FT_Humidity",
+    "fruitingHumidity",
+    "FT"
+  );
+  document.getElementById("humidityGaugeFT").appendChild(humidityGaugeFT);
+
+
   /// For the GT Ventilation button
   document
     .querySelector("#turnOnGTVentilation")
@@ -120,6 +130,16 @@ window.onload = function () {
     });
 };
 
+// This is for the humidity sensor.
+const humiditySensorNames = [
+  "FT_Humidity"
+];
+
+const humiditySensorIdMap = {
+ FT_Humidity: "fruitingHumidity"
+};
+
+
 function updateFanState(fanElementID, newState) {
   const newStateText = newState ? "On" : "Off";
   if (fanElementID === "turnOnGTVentilation") {
@@ -174,6 +194,48 @@ function mapTemperatureToHeight(temp) {
 
   // Return the height as a percentage with '%'
   return `${heightPercentage}%`;
+}
+
+// Updates the humidity for a specific sensor
+function updateHumidity(sensorName) {
+  // Fetch the humidity data for the sensor
+  fetch(`/api/humidity/${sensorName}`)
+    .then((response) =>  response.json())
+    .then((data) => {
+      const humidity = data[sensorName];
+
+      // Round humidity to 1 decimal place
+      const roundedHumidity = Math.round(humidity * 10) / 10;
+
+      // Update humidity gauge height based on humidity
+      document.getElementById(humiditySensorIdMap[sensorName]).style.height =
+        mapHumidityToHeight(humidity); // No need to append '%'
+
+      // Update humidity value display
+      document.querySelector(`#humidityValue${sensorName}`).innerText =
+        roundedHumidity + " %";
+    });
+}
+
+// Maps humidity to humidity gauge height (assuming you have a similar setup as the temperature sensors)
+function mapHumidityToHeight(humidity) {
+   const minHumidity = 40; 
+   const maxHumidity = 100; 
+
+   // Calculate the relative temperature within the range
+   const relativeHumidity = humidity - minHumidity;
+
+   // Calculate the temperature range
+   const humidityRange = maxHumidity - minHumidity;
+
+   // Calculate the proportion of the temperature within the range
+   const proportion = relativeHumidity / humidityRange;
+
+   // Convert the proportion to percentage
+   const heightPercentage = proportion * 100; // This will be a value between 0 and 100
+
+   // Return the height as a percentage with '%'
+   return `${heightPercentage}%`;
 }
 
 // Creates a thermometer html element based on sensor information
@@ -297,6 +359,11 @@ function createThermometer(sensorName, sensorId, sensorLabel) {
 }
 
 // Update temperatures at regular intervals
+
+setInterval(() => {
+  humiditySensorNames.forEach(updateHumidity);
+}, 60000); //Update every minute
+
 setInterval(() => {
   sensorNames.forEach(updateTemperature);
 }, 60000); // Update every five seconds
