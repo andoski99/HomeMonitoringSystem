@@ -5,7 +5,6 @@ body {
     font-family: Arial, sans-serif;
 }
 
-
 canvas {
     border: 1px solid #000;
 }
@@ -17,7 +16,7 @@ canvas {
     padding: 10px 15px;
     margin: 20px 2px;
     cursor: pointer;
-    width: 200px;
+    width: 250px;
 }
 
 .label {
@@ -27,40 +26,32 @@ canvas {
 /* #endregion Common Components */
 
 /* #region Fan */
+.fan {
+  display: flex;
+  align-items: center;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .circle {
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    display: inline-block;
     background-color: grey;
     margin-left: 10px;
     position: relative;
 }
 
-.circle::before,
-.circle::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: black;
-    width: 2px;
-    height: 20px;
+.circle.on {
+    background-color: green;
 }
 
-.circle::before {
-    transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.circle::after {
-    transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-.fan {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+.circle.off {
+    background-color: grey;
 }
 /* #endregion Fan */
 
@@ -75,7 +66,6 @@ canvas {
 }
 
 .thermometer {
-
     width: 50px;
     height: 200px; /* increased the height */
     position: relative;
@@ -165,7 +155,6 @@ canvas {
     margin-bottom: 15px;
 }
 /* #endregion Thermometer */
-
 
 /* #region Tents */
 .tent {

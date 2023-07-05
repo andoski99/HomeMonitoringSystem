@@ -1,0 +1,173 @@
+INFO:apscheduler.scheduler:Scheduler started
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+INFO:apscheduler.scheduler:Scheduler started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 210-253-431
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:40:28] "[33mGET /apple-touch-icon-precomposed.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:40:28] "[33mGET /apple-touch-icon.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:40:28] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:40:30] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:40:30] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:40:30] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:40:30] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:40:30] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:40:30] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:40:30] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:apscheduler.scheduler:Scheduler started
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+INFO:apscheduler.scheduler:Scheduler started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 210-253-431
+INFO:apscheduler.scheduler:Scheduler started
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+INFO:apscheduler.scheduler:Scheduler started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 210-253-431
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:47:52] "[33mGET /apple-touch-icon-precomposed.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:47:52] "[33mGET /apple-touch-icon.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:47:52] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:50:02] "[33mGET /apple-touch-icon-precomposed.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:50:02] "[33mGET /apple-touch-icon.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:50:02] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:53:20] "[33mGET /apple-touch-icon-precomposed.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:53:20] "[33mGET /apple-touch-icon.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:53:20] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:53:21] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:53:22] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:53:22] "GET /static/script.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:53:22] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:54:22] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:54:30] "[33mGET /apple-touch-icon.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:54:30] "[33mGET /apple-touch-icon-precomposed.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:54:30] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:55:22] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:56:22] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:57:22] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:58:12] "[33mGET /apple-touch-icon-precomposed.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:58:12] "[33mGET /apple-touch-icon.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:58:12] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:58:22] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 13:59:22] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:00:22] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:01:07] "[33mGET /apple-touch-icon-precomposed.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:01:07] "[33mGET /apple-touch-icon.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:01:07] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:01:08] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:01:09] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:01:09] "GET /static/script.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:04:49] "[33mGET /apple-touch-icon-precomposed.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:04:49] "[33mGET /apple-touch-icon.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:04:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:04:51] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:04:51] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:04:51] "GET /static/script.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:04:52] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:04:52] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:04:52] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:04:52] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:04:59] "[35m[1mGET /api/fan/group/GTVentilation HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:05:22] "[33mGET /apple-touch-icon-precomposed.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:05:22] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:05:22] "[33mGET /apple-touch-icon.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:05:52] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:05:52] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:05:52] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:05:52] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:06:52] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:06:52] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:06:52] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:06:52] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:07:52] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:07:52] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:07:52] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:07:52] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:08:52] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:08:52] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:08:52] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:08:52] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:09:52] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:09:52] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:09:52] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:09:52] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:10:52] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:10:52] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:10:52] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:10:52] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:11:52] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:11:52] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:11:52] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:11:52] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:12:52] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:12:52] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:12:52] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:12:52] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:13:52] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:13:52] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:13:52] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:13:52] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:14:52] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:14:52] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:14:52] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:14:52] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:15:52] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:15:52] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:15:52] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:15:52] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:16:52] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:16:52] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:16:52] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:16:52] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:17:57] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:17:57] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:17:58] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:17:58] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:19:08] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:19:08] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:19:08] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:19:08] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:21:03] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:21:03] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:21:03] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:21:03] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:22:18] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:22:18] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:22:18] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:22:18] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:26:35] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:26:35] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:26:35] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:26:35] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:29:00] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:29:00] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:29:00] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:29:01] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:32:26] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:32:26] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:32:26] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:32:26] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:33:26] "GET /api/temperature/GT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:33:26] "GET /api/temperature/OT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:33:26] "GET /api/temperature/FT_Temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jul/2023 14:33:26] "GET /api/temperature/MT_Temp HTTP/1.1" 200 -
+INFO:apscheduler.scheduler:Scheduler started
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+INFO:apscheduler.scheduler:Scheduler started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 210-253-431
+INFO:werkzeug: * Detected change in '/Users/kanderson/Documents/HomeMonitoringSystem/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
