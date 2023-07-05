@@ -1,17 +1,8 @@
-// Array of sensor names
-const sensorNames = ["MT_Temp", "GT_Temp", "OT_Temp", "FT_Temp"];
-
-// Mapping of sensor names to corresponding sensor IDs
-const sensorIdMap = {
-  MT_Temp: "redFluidMainTent",
-  GT_Temp: "redFluidGrow",
-  OT_Temp: "redFluid",
-  FT_Temp: "redFluidFruiting",
-};
 
 // Executes when the window is loaded
 window.onload = function () {
-  // Create and append thermometer for OT sensor
+  setTimeout(() => {
+    // Your code here// Create and append thermometer for OT sensor
   const thermometerOT = createThermometer("OT_Temp", "redFluid", "OT");
   document.getElementById("thermometerOT").appendChild(thermometerOT);
 
@@ -32,13 +23,6 @@ window.onload = function () {
 
   // Fetch the initial humidity immediately when the page loads
   fetchHumidity();
-
-  // Humidity Stuff
-  // Create and append humidity gauge for FT sensor
-  const humidityGaugeFT = createHumidityGauge(
-    "FT_Humidity",
-    "fruitingHumidity",
-    "FT"
-  );
-  document.getElementById("humidityGaugeFT").appendChild(humidityGaugeFT);
-  }
+  }, 200); // Delays window.onLoad by x milliseconds
+  
+}

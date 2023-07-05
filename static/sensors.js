@@ -1,6 +1,15 @@
-// Update temperatures at regular interval
 // This file contains the logic for the sensors in the tent like temperature and humidity
+// Array of sensor names.
 
+const sensorNames = ["MT_Temp", "GT_Temp", "OT_Temp", "FT_Temp"];
+
+// Mapping of sensor names to corresponding sensor IDs
+const sensorIdMap = {
+  MT_Temp: "redFluidMainTent",
+  GT_Temp: "redFluidGrow",
+  OT_Temp: "redFluid",
+  FT_Temp: "redFluidFruiting",
+};
 
 // Maps temperature to thermometer height
 function mapTemperatureToHeight(temp) {
@@ -23,6 +32,14 @@ function mapTemperatureToHeight(temp) {
   return `${heightPercentage}%`;
 }
 
+  // Humidity Stuff
+  // Create and append humidity gauge for FT sensor
+  // const humidityGaugeFT = createHumidityGauge(
+  //   "FT_Humidity",
+  //   "fruitingHumidity",
+  //   "FT"
+  // );
+  // document.getElementById("humidityGaugeFT").appendChild(humidityGaugeFT);
 
 function fetchHumidity() {
     fetch('/api/humidity/FT_Humidity')
@@ -41,25 +58,25 @@ setInterval(fetchHumidity, 60000); // updates every second
 
 
 // Maps humidity to humidity gauge height (assuming you have a similar setup as the temperature sensors)
-function mapHumidityToHeight(humidity) {
-   const minHumidity = 40; 
-   const maxHumidity = 100; 
+// function mapHumidityToHeight(humidity) {
+//    const minHumidity = 40; 
+//    const maxHumidity = 100; 
 
-   // Calculate the relative temperature within the range
-   const relativeHumidity = humidity - minHumidity;
+//    // Calculate the relative temperature within the range
+//    const relativeHumidity = humidity - minHumidity;
 
-   // Calculate the temperature range
-   const humidityRange = maxHumidity - minHumidity;
+//    // Calculate the temperature range
+//    const humidityRange = maxHumidity - minHumidity;
 
-   // Calculate the proportion of the temperature within the range
-   const proportion = relativeHumidity / humidityRange;
+//    // Calculate the proportion of the temperature within the range
+//    const proportion = relativeHumidity / humidityRange;
 
-   // Convert the proportion to percentage
-   const heightPercentage = proportion * 100; // This will be a value between 0 and 100
+//    // Convert the proportion to percentage
+//    const heightPercentage = proportion * 100; // This will be a value between 0 and 100
 
-   // Return the height as a percentage with '%'
-   return `${heightPercentage}%`;
-}
+//    // Return the height as a percentage with '%'
+//    return `${heightPercentage}%`;
+// }
 
 
 // This is for the humidity sensor.
