@@ -1,4 +1,7 @@
+// Array of sensor names
 const sensorNames = ["MT_Temp", "GT_Temp", "OT_Temp", "FT_Temp"];
+
+// Mapping of sensor names to corresponding sensor IDs
 const sensorIdMap = {
   MT_Temp: "redFluidMainTent",
   GT_Temp: "redFluidGrow",
@@ -6,108 +9,164 @@ const sensorIdMap = {
   FT_Temp: "redFluidFruiting",
 };
 
+// Executes when the window is loaded
 window.onload = function () {
+  // Create and append thermometer for OT sensor
   const thermometerOT = createThermometer("OT_Temp", "redFluid", "OT");
   document.getElementById("thermometerOT").appendChild(thermometerOT);
 
+  // Create and append thermometer for MT sensor
   const thermometerMT = createThermometer("MT_Temp", "redFluidMainTent", "MT");
   document.getElementById("thermometerMT").appendChild(thermometerMT);
 
+  // Create and append thermometer for GT sensor
   const thermometerGT = createThermometer("GT_Temp", "redFluidGrow", "GT");
   document.getElementById("thermometerGT").appendChild(thermometerGT);
 
+  // Create and append thermometer for FT sensor
   const thermometerFT = createThermometer("FT_Temp", "redFluidFruiting", "FT");
   document.getElementById("thermometerFT").appendChild(thermometerFT);
 
+  // Update the temperatures for all sensors
   sensorNames.forEach(updateTemperature);
 };
 
-
-
+// Updates the temperature for a specific sensor
 function updateTemperature(sensorName) {
+  // Fetch the temperature data for the sensor
   fetch(`/api/temperature/${sensorName}`)
     .then((response) => response.json())
     .then((data) => {
       const temperature = data[sensorName];
+
       // Round temperature to 1 decimal place
       const roundedTemperature = Math.round(temperature * 10) / 10;
 
-      // Update thermometer height
+      // Update thermometer height based on temperature
       document.getElementById(sensorIdMap[sensorName]).style.height =
-        mapTemperatureToHeight(temperature) + "px";
+        mapTemperatureToHeight(temperature); // No need to append '%'
 
-document.querySelector(`#tempValue${sensorName}`).innerText = roundedTemperature + ' °C';
-
+      // Update temperature value display
+      document.querySelector(`#tempValue${sensorName}`).innerText =
+        roundedTemperature + " °C";
     });
-  }
+}
 
-
-
+// Maps temperature to thermometer height
+// Maps temperature to thermometer height
 function mapTemperatureToHeight(temp) {
-  const relativeTemp = temp - 10;
-  const proportion = relativeTemp / 20;
-  return proportion * 100;
-};
+  const minTemperature = 10; // Minimum temperature on the thermometer
+  const maxTemperature = 30; // Maximum temperature on the thermometer
 
-// Added new code to reduce the size of the html
+  // Calculate the relative temperature within the range
+  const relativeTemp = temp - minTemperature;
+
+  // Calculate the temperature range
+  const temperatureRange = maxTemperature - minTemperature;
+
+  // Calculate the proportion of the temperature within the range
+  const proportion = relativeTemp / temperatureRange;
+
+  // Convert the proportion to percentage
+  const heightPercentage = proportion * 100; // This will be a value between 0 and 100
+
+  // console.log(`Temperature: ${temp}`);
+  // console.log(`Relative Temperature: ${relativeTemp}`);
+  // console.log(`Temperature Range: ${temperatureRange}`);
+  // console.log(`Proportion: ${proportion}`);
+  // console.log(`Final Height Percentage: ${heightPercentage}`);
+
+  // Return the height as a percentage with '%'
+  return `${heightPercentage}%`;
+}
+
+
+
+
+
+// Creates a thermometer html element based on sensor information
+/**
+ * Creates a thermometer element based on sensor information.
+ *
+ * @param {string} sensorName - The name of the sensor.
+ * @param {string} sensorId - The ID of the sensor element.
+ * @param {string} sensorLabel - The label to display on the thermometer.
+ * @returns {HTMLElement} The created thermometer element.
+ */
 function createThermometer(sensorName, sensorId, sensorLabel) {
+  // Create the main thermometer container
   let thermometer = document.createElement("div");
   thermometer.className = "thermometer";
 
+  // Create the label container
   let label = document.createElement("div");
-  label.className = "thermometer-header"; // use the class "thermometer-header" for the label
+  label.className = "thermometer-header"; // Use the class "thermometer-header" for the label
 
+  // Create the label text element
   let labelSpan = document.createElement("span");
   labelSpan.className = "label";
   labelSpan.innerText = `${sensorLabel}: `;
 
-let tempValue = document.createElement("span");
-tempValue.id = `tempValue${sensorName}`;
-tempValue.style.whiteSpace = "nowrap";
+  // Create the temperature value element
+  let tempValue = document.createElement("span");
+  tempValue.id = `tempValue${sensorName}`;
+  tempValue.style.whiteSpace = "nowrap";
 
-
+  // Append label text and temperature value to the label container
   label.appendChild(labelSpan);
   label.appendChild(tempValue);
 
+  // Append the label container to the thermometer
   thermometer.appendChild(label);
 
+  // Create the glass element
   let glass = document.createElement("div");
   glass.className = "glass";
 
+  // Create the red fluid element representing the temperature
   let redFluid = document.createElement("div");
   redFluid.className = "red-fluid";
   redFluid.id = sensorId;
+ 
 
+  // Create the mercury element
   let mercury = document.createElement("div");
   mercury.className = "mercury";
 
+  // Append the red fluid and mercury to the glass element
   glass.appendChild(redFluid);
   glass.appendChild(mercury);
+
+  // Append the glass element to the thermometer
   thermometer.appendChild(glass);
 
+  // Create the scale element
   let scale = document.createElement("div");
   scale.className = "scale";
 
+  // Create the graduations element
   let graduations = document.createElement("div");
   graduations.className = "graduations";
 
+  // Create the major and minor graduation elements
   let majorGraduation = document.createElement("div");
   majorGraduation.className = "major-graduation";
 
   let minorGraduation = document.createElement("div");
   minorGraduation.className = "minor-graduation";
 
+  // Append major and minor graduations to the graduations element
   graduations.appendChild(majorGraduation);
   graduations.appendChild(minorGraduation);
+
+  // Append the graduations element to the scale element
   scale.appendChild(graduations);
 
+  // Create the labels element
   let labels = document.createElement("div");
   labels.className = "labels";
 
-  // let label1 = document.createElement("div");
-  // label1.className = "label";
-  // label1.innerHTML = "35&deg;C";
-
+  // Create temperature labels
   let label2 = document.createElement("div");
   label2.className = "label";
   label2.innerHTML = "30&deg;C";
@@ -121,27 +180,32 @@ tempValue.style.whiteSpace = "nowrap";
   label4.innerHTML = "20&deg;C";
 
   let label5 = document.createElement("div");
-  label5.className = "label";   
+  label5.className = "label";
   label5.innerHTML = "15&deg;C";
-  
+
   let label6 = document.createElement("div");
   label6.className = "label";
   label6.innerHTML = "10&deg;C";
 
-  // labels.appendChild(label1);
+  // Append temperature labels to the labels element
   labels.appendChild(label2);
   labels.appendChild(label3);
   labels.appendChild(label4);
   labels.appendChild(label5);
   labels.appendChild(label6);
 
+  // Append the labels element to the scale element
   scale.appendChild(labels);
+
+  // Append the scale element to the thermometer
   thermometer.appendChild(scale);
 
+  // Return the created thermometer element
   return thermometer;
 }
 
 
+// Update temperatures at regular intervals
 setInterval(() => {
   sensorNames.forEach(updateTemperature);
-}, 5000); // Update five seconds
+}, 5000); // Update every five seconds

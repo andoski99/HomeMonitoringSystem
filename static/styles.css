@@ -100,7 +100,7 @@ canvas {
 
 .red-fluid {
     width: 100%;
-    height: 20%; /* set to 20% for now */
+    height: 0px; 
     background-color: #ff0033;
     position: absolute;
     bottom: 0;
