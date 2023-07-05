@@ -5,6 +5,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
+
 canvas {
     border: 1px solid #000;
 }
@@ -20,7 +21,7 @@ canvas {
 }
 
 .label {
-    font-size: 12px;
+    font-size: 14px;
     text-align: right;
 }
 /* #endregion Common Components */
@@ -64,12 +65,26 @@ canvas {
 /* #endregion Fan */
 
 /* #region Thermometer */
+.thermometer-header {
+    display: flex;
+    justify-content: center;
+    font-size: 14px; /* Adjust the pixel value to change the size */
+    align-items: baseline;
+    gap: 5px;  /* to provide a gap between the label and temperature */
+    margin-bottom: 5px;  /* to provide some space between the label and the thermometer */
+}
+
 .thermometer {
+
     width: 50px;
     height: 200px; /* increased the height */
     position: relative;
     margin-left: 30px;
     margin-right: auto;
+}
+
+.tempValue {
+  white-space: nowrap;
 }
 
 .glass {
@@ -145,7 +160,7 @@ canvas {
     justify-content: space-between;
     margin-top: 0px;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     margin-right: 75px; /* adjusted margin to position labels correctly */
     margin-bottom: 15px;
 }
