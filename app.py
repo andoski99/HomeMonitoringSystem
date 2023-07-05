@@ -13,6 +13,32 @@ from apscheduler.triggers.interval import IntervalTrigger
 from Phidget22.Devices.HumiditySensor import *
 import time
 import requests
+from apscheduler.jobstores.base import ConflictingIdError
+
+# Create a scheduler to run tasks in the background
+scheduler = BackgroundScheduler()
+scheduler.start()
+
+def turn_FT_ventilation_on():
+    print("Turning FT ventilation on")
+    activate_FT_ventilation(True)
+    try:
+        # Schedule turning FT ventilation off after 20 seconds
+        scheduler.add_job(turn_FT_ventilation_off, 'interval', seconds=20, id='turn_FT_ventilation_off')
+    except ConflictingIdError:
+        # The job is already scheduled, no action needed
+        pass
+
+def turn_FT_ventilation_off():
+    print("Turning FT ventilation off")
+    activate_FT_ventilation(False)
+    # Remove the job since we want to reschedule it on the next turn_FT_ventilation_on
+    scheduler.remove_job('turn_FT_ventilation_off')
+
+
+# Schedule turning FT ventilation on every 12 minutes
+scheduler.add_job(turn_FT_ventilation_on, IntervalTrigger(seconds=40000))
+
 
 # Device serial number
 DEVICE_SERIAL_NUMBER = 597183
@@ -46,13 +72,6 @@ fan_states = {
     'FTVentilation': False
 }
 
-from apscheduler.schedulers.background import BackgroundScheduler
-
-scheduler = BackgroundScheduler()
-scheduler.start()
-
-
-from apscheduler.triggers.interval import IntervalTrigger
 
 # # Schedule turning fans on every 10 minutes
 # scheduler.add_job(turn_fans_on, IntervalTrigger(minutes=10))
@@ -67,9 +86,7 @@ Net.enableServerDiscovery(PhidgetServerType.PHIDGETSERVER_DEVICEREMOTE)
 # Add Phidget server details
 Net.addServer("ServerName", "192.168.20.193", 5661, "", 0)
 
-# Create a scheduler to run tasks in the background
-scheduler = BackgroundScheduler()
-scheduler.start()
+
 
 def fan_control(fan_map, fan_name, state):
     """
@@ -255,6 +272,7 @@ def get_humidity(sensor_name):
     """
     humidity = get_humidity_from_sensor(sensor_name)
     return jsonify({sensor_name: humidity})
+
 
 
 @app.route('/')
