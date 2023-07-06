@@ -24,7 +24,7 @@ def turn_FT_ventilation_on():
     activate_FT_ventilation(True)
     try:
         # Schedule turning FT ventilation off after 20 seconds
-        scheduler.add_job(turn_FT_ventilation_off, 'interval', seconds=20, id='turn_FT_ventilation_off')
+        scheduler.add_job(turn_FT_ventilation_off, 'interval', minutes=5, id='turn_FT_ventilation_off')
     except ConflictingIdError:
         # The job is already scheduled, no action needed
         pass
@@ -37,7 +37,7 @@ def turn_FT_ventilation_off():
 
 
 # Schedule turning FT ventilation on every 12 minutes
-scheduler.add_job(turn_FT_ventilation_on, IntervalTrigger(seconds=40000))
+scheduler.add_job(turn_FT_ventilation_on, IntervalTrigger(minutes=12))
 
 
 # Device serial number
