@@ -12,7 +12,8 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.interval import IntervalTrigger
 from Phidget22.Devices.HumiditySensor import *
 import time
-import requests
+import datetime
+#import requests
 from apscheduler.jobstores.base import ConflictingIdError
 
 # Create a scheduler to run tasks in the background
@@ -20,24 +21,28 @@ scheduler = BackgroundScheduler()
 scheduler.start()
 
 def turn_FT_ventilation_on():
-    print("Turning FT ventilation on")
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    log_message = f"{timestamp} - Turning FT ventilation on"
+    print(log_message)
     activate_FT_ventilation(True)
     try:
-        # Schedule turning FT ventilation off after 20 seconds
-        scheduler.add_job(turn_FT_ventilation_off, 'interval', minutes=5, id='turn_FT_ventilation_off')
+        # Schedule turning FT ventilation off after x minutes
+        scheduler.add_job(turn_FT_ventilation_off, 'interval', minutes=3, id='turn_FT_ventilation_off')
     except ConflictingIdError:
         # The job is already scheduled, no action needed
         pass
 
 def turn_FT_ventilation_off():
-    print("Turning FT ventilation off")
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    log_message = f"{timestamp} - Turning FT ventilation off"
+    print(log_message)
     activate_FT_ventilation(False)
     # Remove the job since we want to reschedule it on the next turn_FT_ventilation_on
     scheduler.remove_job('turn_FT_ventilation_off')
 
 
-# Schedule turning FT ventilation on every 12 minutes
-scheduler.add_job(turn_FT_ventilation_on, IntervalTrigger(minutes=12))
+# Schedule turning FT ventilation on every x minutes
+scheduler.add_job(turn_FT_ventilation_on, IntervalTrigger(minutes=15))
 
 
 # Device serial number
